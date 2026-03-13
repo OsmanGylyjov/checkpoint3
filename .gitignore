@@ -1,0 +1,47 @@
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Database (SQLite)
+*.db
+*.sqlite
+*.sqlite3
+
+# Flask
+instance/
+
+# Local config / secrets
+.env
+.env.*
+
+# Build / tooling
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated uploads/assets (keep folders, ignore contents)
+static/qr_codes/*
+static/profile_pictures/*
+
