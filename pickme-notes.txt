@@ -1,0 +1,7 @@
+Title: UI/UX: Full-stack integration and professional styling for Medical Card
+
+app.py & dashboard.html: Integrated backend routes with the dashboard to ensure smooth navigation.
+
+base.html & style.css: Implemented a consistent "Glassmorphism" theme with a professional clinical palette (blues and greens).
+
+main.js: Added interactive elements and ensured the UI responds correctly to user actions.
