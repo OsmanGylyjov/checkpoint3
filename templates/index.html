@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}MedQR Travel Pass{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your medical QR for faster airport checks</h1>
+      <p>
+        Store your critical medical information securely, generate a QR code,
+        and show it instantly at the airport or during travel.
+      </p>
+      <div class="hero-actions">
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Create your MedQR</a>
+        <a href="{{ url_for('login') }}" class="btn btn-outline">I already have an account</a>
+      </div>
+      <ul class="hero-list">
+        <li>✓ Quick QR check for border control and airline staff</li>
+        <li>✓ Data stored in secure SQLite database on server</li>
+        <li>✓ Works smoothly on mobile screens</li>
+      </ul>
+    </div>
+    <div class="hero-card">
+      <div class="card">
+        <h2>How it works</h2>
+        <ol>
+          <li>Register and create your profile.</li>
+          <li>Fill in your medical information form.</li>
+          <li>Download or open the QR code and text note.</li>
+        </ol>
+        <p class="muted">
+          When airport staff scan your QR, they will see your medical note
+          clearly as plain text, generated from your saved information.
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Profile · MedQR{% endblock %}
+
+{% block content %}
+  <section class="section-header">
+    <div class="section-title-group">
+      <h1>Your profile</h1>
+      <p class="muted">
+        Upload your profile picture and keep your account ready for travel checks.
+      </p>
+    </div>
+  </section>
+
+  <div class="profile-layout">
+    <div class="profile-sidebar">
+      <div class="profile-avatar-large">
+        {% if profile_picture_url %}
+          <img src="{{ profile_picture_url }}" alt="Profile" />
+        {% else %}
+          <div class="avatar-placeholder-large">{{ current_user.email[0] | upper }}</div>
+        {% endif %}
+      </div>
+      <p class="muted small">Security code: <strong>{{ current_user.security_code }}</strong></p>
+    </div>
+    <div class="profile-main card">
+      <form method="post" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="field">
+          {{ form.full_name.label }}
+          {{ form.full_name(class="input") }}
+          {% for error in form.full_name.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="field">
+          {{ form.profile_picture.label }}
+          {{ form.profile_picture(class="input-file") }}
+          {% for error in form.profile_picture.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="actions">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

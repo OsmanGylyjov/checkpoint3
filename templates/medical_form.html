@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}New medical QR · MedQR{% endblock %}
+
+{% block content %}
+  <section class="section-header">
+    <div class="section-title-group">
+      <h1>Medical information</h1>
+      <p class="muted">
+        Fill in your medical information. A QR code and text note will be generated and saved to your account.
+      </p>
+    </div>
+  </section>
+
+  <div class="card">
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-grid">
+        <div class="field">
+          {{ form.full_name.label }}
+          {{ form.full_name(class="input") }}
+          {% for error in form.full_name.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="field">
+          {{ form.passport_number.label }}
+          {{ form.passport_number(class="input") }}
+          {% for error in form.passport_number.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="field">
+          {{ form.emergency_contact.label }}
+          {{ form.emergency_contact(class="input") }}
+          {% for error in form.emergency_contact.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="field">
+        {{ form.conditions.label }}
+        {{ form.conditions(class="textarea", rows="3") }}
+        {% for error in form.conditions.errors %}
+          <div class="field-error">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="field">
+        {{ form.medications.label }}
+        {{ form.medications(class="textarea", rows="3") }}
+        {% for error in form.medications.errors %}
+          <div class="field-error">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="field">
+        {{ form.allergies.label }}
+        {{ form.allergies(class="textarea", rows="3") }}
+        {% for error in form.allergies.errors %}
+          <div class="field-error">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="actions">
+        {{ form.submit(class="btn btn-primary") }}
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+

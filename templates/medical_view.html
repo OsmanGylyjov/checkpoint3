@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Medical record · MedQR{% endblock %}
+
+{% block content %}
+  <section class="section-header">
+    <div class="section-title-group">
+      <h1>{{ record.full_name }}</h1>
+      <p class="muted">
+        Passport / ID: {{ record.passport_number }} · Emergency contact: {{ record.emergency_contact or '—' }}
+      </p>
+    </div>
+    <a href="{{ url_for('download_note', record_id=record.id) }}" class="btn btn-outline">Download note (.txt)</a>
+  </section>
+
+  <div class="medical-view-layout">
+    <div class="card">
+      <h2>QR code for airport check</h2>
+      <p class="muted small">Ask airport staff to scan this QR. They will see your medical note as clear text.</p>
+      <div class="qr-wrapper">
+        <img src="{{ url_for('view_qr', record_id=record.id) }}" alt="Medical QR code" class="qr-img" />
+      </div>
+    </div>
+    <div class="card">
+      <h2>Summary</h2>
+      <p><strong>Conditions:</strong> {{ record.conditions or 'None reported' }}</p>
+      <p><strong>Medications:</strong> {{ record.medications or 'None reported' }}</p>
+      <p><strong>Allergies:</strong> {{ record.allergies or 'None reported' }}</p>
+      <p class="muted small">
+        Generated at {{ record.created_at.strftime('%Y-%m-%d %H:%M UTC') }}.
+      </p>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Log in · MedQR{% endblock %}
+
+{% block content %}
+  <div class="auth-layout">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="muted">Log in to see and manage your saved medical QR codes.</p>
+
+      <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="field">
+          {{ form.email.label }}
+          {{ form.email(class="input") }}
+          {% for error in form.email.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="field">
+          {{ form.password.label }}
+          {{ form.password(class="input") }}
+          {% for error in form.password.errors %}
+            <div class="field-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="actions">
+          {{ form.submit(class="btn btn-primary btn-full") }}
+        </div>
+        <p class="muted text-center">
+          New here?
+          <a href="{{ url_for('register') }}">Create an account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

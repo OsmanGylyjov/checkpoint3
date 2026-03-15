@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Saved inf · MedQR{% endblock %}
+
+{% block content %}
+  <section class="section-header">
+    <div class="section-title-group">
+      <h1>Saved inf</h1>
+      <p class="muted">
+        All medical records and QR codes you have generated. Show these at the airport when requested.
+      </p>
+    </div>
+    <a href="{{ url_for('create_medical') }}" class="btn btn-primary">New medical QR</a>
+  </section>
+
+  {% if records %}
+    <div class="cards-grid">
+      {% for record in records %}
+        <article class="card record-card">
+          <header class="record-header">
+            <div>
+              <h2>{{ record.full_name }}</h2>
+              <p class="muted">Passport / ID: {{ record.passport_number }}</p>
+            </div>
+            <span class="badge">{{ record.created_at.strftime('%Y-%m-%d') }}</span>
+          </header>
+          <div class="record-body">
+            <p><strong>Emergency contact:</strong> {{ record.emergency_contact or '—' }}</p>
+            <p class="muted small">
+              When scanned, this QR opens a clear text note with all medical information.
+            </p>
+          </div>
+          <div class="record-footer">
+            <a href="{{ url_for('view_medical', record_id=record.id) }}" class="btn btn-outline-sm">Open details</a>
+            <a href="{{ url_for('download_note', record_id=record.id) }}" class="btn btn-link-sm">Download note (.txt)</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>You don’t have any saved information yet.</p>
+      <a href="{{ url_for('create_medical') }}" class="btn btn-primary">Create your first medical QR</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
