@@ -1,0 +1,46 @@
+Project MedScan: Secure Health QR Systems
+Developer Documentation & Project Overview
+
+1. Executive Summary
+MedScan is a Flask-based web application designed for emergency preparedness.
+It allows users to digitize their critical medical information into a portable QR code.
+In an emergency, a first responder can scan the code to instantly view life-saving data—such as 
+allergies or blood type—and save it directly to their device notes without needing a specialized app.
+
+2. Technical Architecture
+The project utilizes a robust Python-based stack to ensure speed and security.
+
+Backend Framework: Flask (Python)
+
+Database: SQLAlchemy (SQLite for development / PostgreSQL for production)
+
+Authentication: Flask-Login with Werkzeug salted password hashing.
+
+QR Logic: python-qrcode with Pillow for image processing.
+
+Frontend: HTML5, CSS3 (Bootstrap/Tailwind), and Jinja2 templating.
+
+3. Core Functionality (The User Journey)
+A. Secure Onboarding
+Users register with an encrypted profile. 
+The system uses Session Management to ensure that medical forms are only accessible by the account owner.
+
+
+C. QR Generation & Note Integration
+When a user "Generates" their code, the Flask backend:
+
+Retrieves the latest form data from the database.
+
+Formats the data into a clean, readable string or vCard format.
+
+Generates a unique QR image stored in the user's private gallery.
+
+Feature: The QR is encoded specifically so mobile OS scanners (iOS/Android)
+recognize the text and offer a "Save to Notes" or "Create Contact" shortcut.
+
+B. The Medical Data Engine
+The core of the app is a dynamic form that captures:
+
+Vital Stats: Blood group, height, weight.
+
+Medical Alerts: Allergies, chronic conditions, current medications.
