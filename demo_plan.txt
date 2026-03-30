@@ -1,0 +1,14 @@
+# 2-Minute Demo Script
+
+### 1. Introduction (30s)
+* **Goal:** Present "AirMed Pass" – a digital medical ID for travelers.
+* **UI/UX:** Bold high-contrast design with a glassmorphism effect for clarity and style.
+
+### 2. Key Features (1 min)
+* **Medical Card:** Show dynamic data (Name, Blood Type, Vaccination status).
+* **The "Wow" Factor:** QR Code integration for seamless airport verification.
+
+### 3. Technical Stack & Closing (30s)
+* **Backend:** Flask (Python) and SQL database.
+* **Frontend:** Responsive HTML/CSS and JavaScript.
+* **Final:** Quick look at the Logout function and Q&A.
